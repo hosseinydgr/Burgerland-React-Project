@@ -1,0 +1,14 @@
+.main-cont {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.category-title {
+  margin-bottom: 15px;
+}
+
+.foods-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 15px;
+}

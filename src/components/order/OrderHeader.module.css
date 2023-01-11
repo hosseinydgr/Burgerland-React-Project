@@ -1,0 +1,31 @@
+.main-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5%;
+  width: 100vw;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.account {
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 400ms;
+}
+
+.account:hover {
+  background-color: black;
+  color: white;
+}
+
+@media (width <=450px) {
+  .main-cont {
+    padding: 10px;
+  }
+}
