@@ -39,3 +39,23 @@
   background-color: rgb(28, 28, 28);
   color: white;
 }
+
+.count-cont {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.count-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: rgb(28, 28, 28);
+  color: white;
+}
+
+.hidden {
+  display: none;
+}

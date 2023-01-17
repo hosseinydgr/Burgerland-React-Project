@@ -13,7 +13,9 @@ class OrderFoodCategory extends React.Component {
             img={products[i].img}
             title={products[i].title}
             price={products[i].price}
-            key={i}
+            id={products[i].id}
+            count={this.props.countsObj[products[i].id]}
+            key={products[i].id}
           />
         );
       }

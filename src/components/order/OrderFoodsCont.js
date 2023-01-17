@@ -4,6 +4,13 @@ import OrderFoodCategory from "./OrderFoodCategory";
 import styles from "./OrderFoodsCont.module.css";
 
 class OrderFoodsCont extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  addBtnHandler() {}
+
   render() {
     const arr = [];
     const arr2 = [];
@@ -12,7 +19,13 @@ class OrderFoodsCont extends React.Component {
     }
     const arr3 = [...new Set(arr)];
     for (let i = 0; i < arr3.length; i++) {
-      arr2.push(<OrderFoodCategory categoryName={arr3[i]} key={i} />);
+      arr2.push(
+        <OrderFoodCategory
+          categoryName={arr3[i]}
+          key={i}
+          countsObj={this.state}
+        />
+      );
     }
 
     return <div className={styles["main-cont"]}>{arr2}</div>;
