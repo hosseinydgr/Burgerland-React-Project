@@ -2,4 +2,11 @@
   width: 65%;
   border: 1px solid #888;
   padding: 20px;
+  background-color: white;
+}
+
+@media (width < 977px) {
+  .main-cont {
+    width: 100%;
+  }
 }

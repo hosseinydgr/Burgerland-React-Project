@@ -4,9 +4,9 @@ import OrderPage from "./components/order/OrderPage";
 
 function App() {
   return (
-    <div>
+    <>
       <OrderPage />
-    </div>
+    </>
   );
 }
 

@@ -10,5 +10,31 @@
 .foods-cont {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   row-gap: 15px;
+  column-gap: 10px;
+}
+
+@media (977px <= width < 1393px) {
+  .foods-cont {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (840px <= width < 977px) {
+  .foods-cont {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (570px <= width < 840px) {
+  .foods-cont {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width < 570px) {
+  .foods-cont {
+    grid-template-columns: 1fr;
+  }
 }

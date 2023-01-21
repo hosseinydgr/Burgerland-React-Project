@@ -16,6 +16,9 @@ class OrderFoodCategory extends React.Component {
             id={products[i].id}
             count={this.props.countsObj[products[i].id]}
             key={products[i].id}
+            addBtnHandler={this.props.addBtnHandler}
+            removeBtnHandler={this.props.removeBtnHandler}
+            modalOpener={this.props.modalOpener}
           />
         );
       }

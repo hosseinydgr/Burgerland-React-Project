@@ -1,0 +1,96 @@
+.main-cont {
+  width: 30%;
+  background-color: white;
+  /* height: 100px; */
+}
+
+.empty-cart-title {
+  padding: 15px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.empty-cart-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  color: #ccc;
+}
+
+.flex-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.border {
+  border-bottom: 1px solid #ccc;
+}
+
+.trash-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.count-cont {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.count-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid rgb(28, 28, 28);
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count-btn:hover {
+  background-color: rgb(28, 28, 28);
+  color: white;
+}
+
+.tax {
+  font-size: 13px;
+  color: #777;
+}
+
+.discount-btn {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.checkout-btn {
+  width: 90%;
+  background-color: rgb(28, 28, 28);
+  color: white;
+  margin: 20px 5%;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.empty-box {
+  width: 90px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (width < 977px) {
+  .main-cont {
+    display: none;
+  }
+}

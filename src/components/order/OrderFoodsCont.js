@@ -4,13 +4,6 @@ import OrderFoodCategory from "./OrderFoodCategory";
 import styles from "./OrderFoodsCont.module.css";
 
 class OrderFoodsCont extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  addBtnHandler() {}
-
   render() {
     const arr = [];
     const arr2 = [];
@@ -23,7 +16,10 @@ class OrderFoodsCont extends React.Component {
         <OrderFoodCategory
           categoryName={arr3[i]}
           key={i}
-          countsObj={this.state}
+          countsObj={this.props.wholeStateObj}
+          addBtnHandler={this.props.addBtnHandler}
+          removeBtnHandler={this.props.removeBtnHandler}
+          modalOpener={this.props.modalOpener}
         />
       );
     }
