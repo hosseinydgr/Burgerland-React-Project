@@ -11,12 +11,15 @@ import { ThemeProvider } from "styled-components";
 class OrderPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modal: [false, ""] };
+    this.state = { modal: [false, "", 0, 0] };
     this.addBtnHandler = this.addBtnHandler.bind(this);
     this.removeBtnHandler = this.removeBtnHandler.bind(this);
     this.clearBtnHandler = this.clearBtnHandler.bind(this);
     this.modalOpener = this.modalOpener.bind(this);
     this.modalCloser = this.modalCloser.bind(this);
+    this.modalAddHandler = this.modalAddHandler.bind(this);
+    this.modalRemoveHandler = this.modalRemoveHandler.bind(this);
+    this.modalUpdateCart = this.modalUpdateCart.bind(this);
   }
 
   addBtnHandler(id) {
@@ -42,11 +45,51 @@ class OrderPage extends React.Component {
   }
 
   modalOpener(id) {
-    this.setState({ modal: [true, id] });
+    this.setState((state) => ({ modal: [true, id, state[id], state[id]] }));
+    document.body.style.overflow = "hidden";
   }
 
   modalCloser() {
-    this.setState({ modal: [false, ""] });
+    this.setState({ modal: [false, "", 0, 0] });
+    document.body.style.overflow = "unset";
+    document.body.style.overflowX = "hidden";
+  }
+
+  modalAddHandler() {
+    if (this.state.modal[2]) {
+      this.setState((state) => ({
+        modal: [
+          true,
+          state.modal[1],
+          state.modal[2] + 1,
+          state[state.modal[1]],
+        ],
+      }));
+    } else {
+      this.setState((state) => ({
+        modal: [true, state.modal[1], 1, state[state.modal[1]]],
+      }));
+    }
+  }
+
+  modalRemoveHandler() {
+    if (this.state.modal[2] > 0) {
+      this.setState((state) => ({
+        modal: [
+          true,
+          state.modal[1],
+          state.modal[2] - 1,
+          state[state.modal[1]],
+        ],
+      }));
+    }
+  }
+
+  modalUpdateCart(id, count) {
+    this.setState({ [id]: count });
+    this.setState({ modal: [false, "", 0, 0] });
+    document.body.style.overflow = "unset";
+    document.body.style.overflowX = "hidden";
   }
 
   render() {
@@ -70,6 +113,9 @@ class OrderPage extends React.Component {
           <OrderModal
             modalState={this.state.modal}
             modalCloser={this.modalCloser}
+            addBtnHandler={this.modalAddHandler}
+            removeBtnHandler={this.modalRemoveHandler}
+            updateCart={this.modalUpdateCart}
           />
         </div>
         {/* <Test /> */}

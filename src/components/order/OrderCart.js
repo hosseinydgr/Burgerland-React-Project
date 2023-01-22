@@ -77,7 +77,7 @@ class OrderCart extends React.Component {
           <div className={`${styles["flex-cont"]} ${styles.border}`}>
             <h3>{`Cart(${c})`}</h3>
             <img
-              src={"./Assets/pic.jpg"}
+              src={"./Assets/icons/trash-icon.png"}
               className={styles["trash-icon"]}
               onClick={this.props.clearBtnHandler}
             />

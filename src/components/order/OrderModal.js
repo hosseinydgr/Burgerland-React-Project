@@ -3,7 +3,15 @@ import products from "./products";
 import styles from "./OrderModal.module.css";
 
 class OrderModal extends React.Component {
+  updateCart() {
+    if (this.props.modalState[2] !== this.props.modalState[3])
+      this.props.updateCart(this.props.modalState[1], this.props.modalState[2]);
+  }
+
   render() {
+    if (!this.props.modalState[2]) this.props.modalState[2] = 0;
+    if (!this.props.modalState[3]) this.props.modalState[3] = 0;
+
     return (
       <>
         <div
@@ -13,7 +21,7 @@ class OrderModal extends React.Component {
         >
           <div>
             <img
-              src="./Assets/pic.jpg"
+              src="./Assets/icons/close-icon.png"
               className={styles["close-icon"]}
               onClick={this.props.modalCloser}
             />
@@ -35,21 +43,53 @@ class OrderModal extends React.Component {
           </div>
 
           <div className={styles.footer}>
-            <button className={styles["add-to-cart-btn"]}>
-              Add to Cart <span className={styles.price}>$134.54</span>
+            <button
+              className={`${styles["add-to-cart-btn"]} ${
+                this.props.modalState[2] === 0 ||
+                this.props.modalState[2] === this.props.modalState[3]
+                  ? styles.inactive
+                  : ""
+              }`}
+              onClick={this.updateCart.bind(this)}
+            >
+              Update the Cart{" "}
+              <span className={styles.price}>
+                {this.props.modalState[2]
+                  ? `$${(
+                      Number(
+                        products[Number(this.props.modalState[1])].price.slice(
+                          1
+                        )
+                      ) * this.props.modalState[2]
+                    ).toFixed(2)}`
+                  : products[Number(this.props.modalState[1])].price}
+              </span>
             </button>
 
-            <div className={styles["count-cont"]}>
+            <button
+              className={`${styles["add-btn"]} ${
+                !this.props.modalState[2] ? "" : styles.hidden
+              }`}
+              onClick={this.props.addBtnHandler}
+            >
+              +
+            </button>
+
+            <div
+              className={`${styles["count-cont"]} ${
+                this.props.modalState[2] ? "" : styles.hidden
+              }`}
+            >
               <button
                 className={styles["count-btn"]}
-                // onClick={this.removeBtnHandler.bind(this)}
+                onClick={this.props.removeBtnHandler}
               >
                 &mdash;
               </button>
-              <p className={styles["count-text"]}>3</p>
+              <p className={styles["count-text"]}>{this.props.modalState[2]}</p>
               <button
                 className={styles["count-btn"]}
-                // onClick={this.addBtnHandler.bind(this)}
+                onClick={this.props.addBtnHandler}
               >
                 +
               </button>

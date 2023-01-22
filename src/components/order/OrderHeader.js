@@ -6,7 +6,7 @@ class OrderHeader extends React.Component {
     return (
       <div className={styles["main-cont"]}>
         <button className={styles.account}>Hossein Yadegari</button>
-        <img className={styles.logo} src={"./Assets/pic.jpg"} alt="logo" />
+        <img className={styles.logo} src="./Assets/logo.jpg" alt="logo" />
       </div>
     );
   }
