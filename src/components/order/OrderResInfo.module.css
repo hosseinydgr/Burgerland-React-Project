@@ -2,9 +2,9 @@
   width: 100%;
   /* margin: 0 auto; */
   height: 300px;
-  padding: 0 10%;
+  /* padding: 0 10%; */
   position: relative;
-  background-image: url("../../../public/Assets/pic.jpg");
+  background-image: url("../../../public/Assets/cover-big.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -14,7 +14,10 @@
 .res-info {
   position: absolute;
   top: 40px;
+  right: 10%;
   z-index: 3;
+  text-align: center;
+  width: 300px;
 }
 
 .margin-y {
@@ -26,12 +29,16 @@
   padding: 8px 15px;
   border-radius: 7px;
   cursor: pointer;
+  border: none;
 }
 
 .timing-info {
   position: absolute;
   top: 200px;
+  right: 10%;
   z-index: 3;
+  text-align: center;
+  width: 300px;
 }
 
 .overlay {
@@ -42,4 +49,11 @@
   left: 0;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+@media (width < 1020px) {
+  .res-info,
+  .timing-info {
+    right: calc((100vw - 300px) / 2);
+  }
 }

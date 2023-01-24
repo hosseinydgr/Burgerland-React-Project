@@ -1,0 +1,30 @@
+.cont {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 20px;
+}
+
+.cont img {
+  width: 45px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  /* cursor: pointer; */
+}
+
+.cont input {
+  height: 45px;
+  background-color: #f1f1f1;
+  border: none;
+  padding: 0 10px;
+  width: 295px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 17px;
+}
+
+.cont input:focus-visible {
+  outline: none;
+}

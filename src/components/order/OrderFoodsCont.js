@@ -1,6 +1,8 @@
 import React from "react";
 import products from "./products";
 import OrderFoodCategory from "./OrderFoodCategory";
+import OrderSearch from "./OrderSearch";
+import OrderScroll from "./OrderScroll";
 import styles from "./OrderFoodsCont.module.css";
 
 class OrderFoodsCont extends React.Component {
@@ -24,7 +26,13 @@ class OrderFoodsCont extends React.Component {
       );
     }
 
-    return <div className={styles["main-cont"]}>{arr2}</div>;
+    return (
+      <div className={styles["main-cont"]}>
+        <OrderScroll />
+        <OrderSearch />
+        <div>{arr2}</div>
+      </div>
+    );
   }
 }
 

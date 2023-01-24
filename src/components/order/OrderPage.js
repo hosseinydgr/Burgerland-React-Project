@@ -110,14 +110,14 @@ class OrderPage extends React.Component {
             removeBtnHandler={this.removeBtnHandler}
             clearBtnHandler={this.clearBtnHandler}
           />
-          <OrderModal
-            modalState={this.state.modal}
-            modalCloser={this.modalCloser}
-            addBtnHandler={this.modalAddHandler}
-            removeBtnHandler={this.modalRemoveHandler}
-            updateCart={this.modalUpdateCart}
-          />
         </div>
+        <OrderModal
+          modalState={this.state.modal}
+          modalCloser={this.modalCloser}
+          addBtnHandler={this.modalAddHandler}
+          removeBtnHandler={this.modalRemoveHandler}
+          updateCart={this.modalUpdateCart}
+        />
         {/* <Test /> */}
       </div>
     );
