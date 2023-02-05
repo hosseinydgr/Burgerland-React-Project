@@ -1,15 +1,21 @@
-import React from "react";
 import styles from "./OrderSearch.module.css";
+import { useRef } from "react";
 
-class OrderSearch extends React.Component {
-  render() {
-    return (
-      <div className={styles.cont}>
-        <img src="./Assets/icons/search-icon.png" alt="search-icon" />
-        <input type="text" placeholder="Quick Search" />
-      </div>
-    );
+export default function OrderSearch() {
+  const inputRef = useRef(null);
+
+  function handleImgClick() {
+    inputRef.current.focus();
   }
-}
 
-export default OrderSearch;
+  return (
+    <div className={styles.cont}>
+      <img
+        src="./Assets/icons/search-icon.png"
+        alt="search-icon"
+        onClick={handleImgClick}
+      />
+      <input type="text" placeholder="Quick Search" ref={inputRef} />
+    </div>
+  );
+}
