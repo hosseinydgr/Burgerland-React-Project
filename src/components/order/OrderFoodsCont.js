@@ -1,14 +1,27 @@
-import React from "react";
-import products from "./products";
+import React, { useEffect, useState } from "react";
+// import products from "./products";
 import OrderFoodCategory from "./OrderFoodCategory";
 import OrderSearch from "./OrderSearch";
 import OrderScroll from "./OrderScroll";
 import styles from "./OrderFoodsCont.module.css";
 
-class OrderFoodsCont extends React.Component {
-  render() {
+function OrderFoodsCont(props) {
+  const [products, setProducts] = useState(null);
+
+  useEffect(function () {
+    (async function () {
+      const res = await fetch("http://localhost:3000/products");
+      const data = await res.json();
+      setProducts(data);
+      // console.log(data);
+    })();
+  }, []);
+
+  let arr2;
+
+  if (products) {
     const arr = [];
-    const arr2 = [];
+    arr2 = [];
     for (let i = 0; i < products.length; i++) {
       arr.push(products[i].category);
     }
@@ -18,22 +31,22 @@ class OrderFoodsCont extends React.Component {
         <OrderFoodCategory
           categoryName={arr3[i]}
           key={i}
-          countsObj={this.props.wholeStateObj}
-          addBtnHandler={this.props.addBtnHandler}
-          removeBtnHandler={this.props.removeBtnHandler}
-          modalOpener={this.props.modalOpener}
+          countsObj={props.counts}
+          addBtnHandler={props.addBtnHandler}
+          removeBtnHandler={props.removeBtnHandler}
+          modalOpener={props.modalOpener}
         />
       );
     }
-
-    return (
-      <div className={styles["main-cont"]}>
-        <OrderScroll />
-        <OrderSearch />
-        <div>{arr2}</div>
-      </div>
-    );
   }
+
+  return (
+    <div className={styles["main-cont"]}>
+      <OrderScroll />
+      <OrderSearch />
+      <div>{products ? arr2 : "ouch"}</div>
+    </div>
+  );
 }
 
 export default OrderFoodsCont;

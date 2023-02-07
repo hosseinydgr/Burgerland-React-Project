@@ -14,19 +14,19 @@ class OrderCart extends React.Component {
     const arr = [];
     let sum = 0;
     let c = 0;
-    for (let key in this.props.wholeStateObj) {
-      if (this.props.wholeStateObj[key] && key !== "modal") {
+    for (let key in this.props.counts) {
+      if (this.props.counts[key] && key !== "modal") {
         sum +=
           Number(products[key].price.substring(1)) *
-          Number(this.props.wholeStateObj[key]);
-        c += Number(this.props.wholeStateObj[key]);
+          Number(this.props.counts[key]);
+        c += Number(this.props.counts[key]);
         arr.push(
           <div className={`${styles["flex-cont"]} ${styles.border}`} key={key}>
             <div>
               <h4>{products[key].title}</h4>
               <p>{`$${(
                 Number(products[key].price.substring(1)) *
-                Number(this.props.wholeStateObj[key])
+                Number(this.props.counts[key])
               ).toFixed(2)}`}</p>
             </div>
             <div className={styles["count-cont"]}>
@@ -37,9 +37,7 @@ class OrderCart extends React.Component {
               >
                 &mdash;
               </button>
-              <p className={styles["count-text"]}>
-                {this.props.wholeStateObj[key]}
-              </p>
+              <p className={styles["count-text"]}>{this.props.counts[key]}</p>
               <button
                 className={styles["count-btn"]}
                 onClick={this.addBtnHandler.bind(this)}
