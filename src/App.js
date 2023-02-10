@@ -1,11 +1,15 @@
 import "./App.css";
 import React from "react";
 import OrderPage from "./components/order/OrderPage";
+import { Provider } from "react-redux";
+import { store } from "./store/index.js";
 
 function App() {
   return (
     <>
-      <OrderPage />
+      <Provider store={store}>
+        <OrderPage />
+      </Provider>
     </>
   );
 }

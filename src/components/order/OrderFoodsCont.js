@@ -27,16 +27,7 @@ function OrderFoodsCont(props) {
     }
     const arr3 = [...new Set(arr)];
     for (let i = 0; i < arr3.length; i++) {
-      arr2.push(
-        <OrderFoodCategory
-          categoryName={arr3[i]}
-          key={i}
-          countsObj={props.counts}
-          addBtnHandler={props.addBtnHandler}
-          removeBtnHandler={props.removeBtnHandler}
-          modalOpener={props.modalOpener}
-        />
-      );
+      arr2.push(<OrderFoodCategory categoryName={arr3[i]} key={i} />);
     }
   }
 

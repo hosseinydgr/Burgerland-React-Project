@@ -9,34 +9,6 @@ import styles from "./OrderPage.module.css";
 
 function OrderPage() {
   const [modalState, setModalState] = useState([false, "", 0, 0]);
-  const [counts, setCounts] = useState({});
-
-  function addBtnHandler(id) {
-    if (!counts[id]) {
-      setCounts({ ...counts, [id]: 1 });
-    } else {
-      setCounts({ ...counts, [id]: counts[id] + 1 });
-    }
-  }
-
-  function removeBtnHandler(id) {
-    if (counts[id] > 0) {
-      setCounts({ ...counts, [id]: counts[id] - 1 });
-    }
-  }
-
-  function clearBtnHandler() {
-    for (let key in counts) {
-      if (counts[key]) {
-        setCounts({ ...counts, [key]: 0 });
-      }
-    }
-  }
-
-  function modalOpener(id) {
-    setModalState([true, id, counts[id], counts[id]]);
-    document.body.style.overflow = "hidden";
-  }
 
   function modalCloser() {
     setModalState([false, "", 0, 0]);
@@ -80,12 +52,7 @@ function OrderPage() {
       <OrderHeader />
       <OrderResInfo />
       <div className={styles.cont}>
-        <OrderFoodsCont
-          counts={counts}
-          addBtnHandler={addBtnHandler}
-          removeBtnHandler={removeBtnHandler}
-          modalOpener={modalOpener}
-        />
+        <OrderFoodsCont />
         <OrderCart
           counts={counts}
           addBtnHandler={addBtnHandler}
@@ -94,7 +61,6 @@ function OrderPage() {
         />
       </div>
       <OrderModal
-        modalState={modalState}
         modalCloser={modalCloser}
         addBtnHandler={modalAddHandler}
         removeBtnHandler={modalRemoveHandler}
