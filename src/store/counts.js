@@ -17,6 +17,9 @@ const countsSlice = createSlice({
     clear() {
       return {};
     },
+    updateByModal(state, action) {
+      state[action.payload.id] = action.payload.newValue;
+    },
   },
 });
 

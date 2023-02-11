@@ -1,18 +1,47 @@
 import React from "react";
 import products from "./products";
 import styles from "./OrderModal.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { modalActions } from "../../store/modalState";
+import { countsActions } from "../../store/counts";
 
 function OrderModal(props) {
   const modalState = useSelector((state) => state.modalState);
+  const dispatch = useDispatch();
 
   function updateCart() {
     if (modalState[2] !== modalState[3])
       props.updateCart(modalState[1], modalState[2]);
   }
 
-  if (!modalState[2]) modalState[2] = 0;
-  if (!modalState[3]) modalState[3] = 0;
+  function modalCloser() {
+    dispatch(modalActions.close());
+    document.body.style.overflow = "unset";
+    document.body.style.overflowX = "hidden";
+  }
+
+  function addBtnHandler() {
+    dispatch(modalActions.add());
+  }
+
+  function removeBtnHandler() {
+    dispatch(modalActions.add());
+  }
+
+  function updateCart() {
+    dispatch(
+      countsActions.updateByModal({
+        id: modalState[1],
+        newValue: modalState[2],
+      })
+    );
+    dispatch(modalActions.close());
+    document.body.style.overflow = "unset";
+    document.body.style.overflowX = "hidden";
+  }
+
+  // if (!modalState[2]) modalState[2] = 0;
+  // if (!modalState[3]) modalState[3] = 0;
 
   return (
     <>
@@ -21,7 +50,7 @@ function OrderModal(props) {
           <img
             src="./Assets/icons/close-icon.png"
             className={styles["close-icon"]}
-            onClick={props.modalCloser}
+            onClick={modalCloser}
           />
         </div>
 
@@ -64,7 +93,7 @@ function OrderModal(props) {
             className={`${styles["add-btn"]} ${
               !modalState[2] ? "" : styles.hidden
             }`}
-            onClick={props.addBtnHandler}
+            onClick={addBtnHandler}
           >
             +
           </button>
@@ -74,17 +103,11 @@ function OrderModal(props) {
               modalState[2] ? "" : styles.hidden
             }`}
           >
-            <button
-              className={styles["count-btn"]}
-              onClick={props.removeBtnHandler}
-            >
+            <button className={styles["count-btn"]} onClick={removeBtnHandler}>
               &mdash;
             </button>
             <p className={styles["count-text"]}>{modalState[2]}</p>
-            <button
-              className={styles["count-btn"]}
-              onClick={props.addBtnHandler}
-            >
+            <button className={styles["count-btn"]} onClick={addBtnHandler}>
               +
             </button>
           </div>
@@ -93,7 +116,7 @@ function OrderModal(props) {
 
       <div
         className={`${styles.overlay} ${modalState[0] ? "" : styles.hidden}`}
-        onClick={props.modalCloser}
+        onClick={modalCloser}
       ></div>
     </>
   );
