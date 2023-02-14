@@ -1,15 +1,13 @@
 import "./App.css";
 import React from "react";
 import OrderPage from "./components/order/OrderPage";
-import { Provider } from "react-redux";
-import { store } from "./store/index.js";
+import UserPage from "./components/user/UserPage";
 
 function App() {
   return (
     <>
-      <Provider store={store}>
-        <OrderPage />
-      </Provider>
+      {/* <OrderPage /> */}
+      <UserPage />
     </>
   );
 }

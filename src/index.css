@@ -1,9 +1,15 @@
+@font-face {
+  font-family: "gotham";
+  src: url("../public/Assets/fonts/gotham-6-cufonfonts/JostVariableFont_wght.ttf");
+  font-weight: 450;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "gotham";
 }
 
 body {

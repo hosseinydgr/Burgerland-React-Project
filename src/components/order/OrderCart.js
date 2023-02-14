@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./OrderCart.module.css";
 import products from "./products";
 import { useSelector, useDispatch } from "react-redux";
-import { countsActions } from "../../store/counts";
+import { countsActions } from "../../store/counts.js";
 
 function OrderCart(props) {
   const counts = useSelector((state) => state.counts);
