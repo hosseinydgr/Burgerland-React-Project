@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OrderHeader from "./OrderHeader";
+import Header from "../header/Header.js";
 import OrderResInfo from "./OrderResInfo";
 import OrderFoodsCont from "./OrderFoodsCont";
 import OrderCart from "./OrderCart";
@@ -12,16 +12,15 @@ function OrderPage() {
   const dispatch = useDispatch();
 
   useEffect(function () {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      dispatch(authActions.login());
+    const user = localStorage.getItem("user");
+    if (user) {
+      dispatch(authActions.login(JSON.parse(user)));
     }
-    // localStorage.clear();
   }, []);
 
   return (
     <div className={styles["main-cont"]}>
-      <OrderHeader />
+      <Header />
       <OrderResInfo />
       <div className={styles.cont}>
         <OrderFoodsCont />

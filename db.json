@@ -74,5 +74,37 @@
       "id": "7"
     }
   ],
-  "users": [{ "name": "Ali Alavi", "id": "0" }]
+  "users": [
+    {
+      "name": "Ali Alavi",
+      "id": "0",
+      "phone": "01234567890",
+      "email": "abc@abc.com",
+      "password": "a123",
+      "adds": [
+        {
+          "title": "Home",
+          "address": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used",
+          "city": "Tehran",
+          "state": "Tehran",
+          "phone": "01234567"
+        },
+        {
+          "title": "Office",
+          "address": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used",
+          "city": "Karaj",
+          "state": "Alborz",
+          "phone": "98765432"
+        }
+      ],
+      "orders": [
+        {
+          "date": "1677095983861",
+          "add": "1",
+          "foods": { "0": "2", "2": "5" },
+          "totalPrice": "145.00$"
+        }
+      ]
+    }
+  ]
 }

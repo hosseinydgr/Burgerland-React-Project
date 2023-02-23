@@ -10,6 +10,7 @@
 .logo {
   width: 70px;
   height: 70px;
+  cursor: pointer;
 }
 
 .action-btn {
@@ -23,11 +24,6 @@
 .action-btn:hover {
   background-color: black;
   color: white;
-}
-
-.login-cont {
-  display: flex;
-  gap: 10px;
 }
 
 @media (width <=450px) {

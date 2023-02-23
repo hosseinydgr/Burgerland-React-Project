@@ -1,6 +1,39 @@
+import { useSelector } from "react-redux";
 import styles from "./UserAddresses.module.css";
 
 export default function UserAddresses() {
+  const user = useSelector((state) => state.auth.user);
+  const arr = [];
+  for (let i = 0; i < user.adds.length; i++) {
+    arr.push(
+      <div
+        className={styles["address-cont"]}
+        onMouseEnter={shoeEdit}
+        onMouseLeave={hideEdit}
+        key={i}
+        id={i}
+      >
+        <img src="./Assets/pic.jpg" className={styles["loc-icon"]} />
+
+        <div>
+          <h5>{user.adds[i].title}</h5>
+          <p className={styles["exact-address"]}>
+            <span>{user.adds[i].address}</span> |{" "}
+            <span>{user.adds[i].city}</span> | <span>{user.adds[i].state}</span>
+          </p>
+          <p className={styles["phone-number"]}>
+            Phone Number: <span>{user.adds[i].phone}</span>
+          </p>
+        </div>
+
+        <div className={`${styles["edit-cont"]} ${styles.hidden}`}>
+          <img src="./Assets/pic.jpg" className={styles["pen-icon"]} />
+          <img src="./Assets/pic.jpg" className={styles["trash-icon"]} />
+        </div>
+      </div>
+    );
+  }
+
   function shoeEdit(e) {
     // console.log(e.currentTarget.lastElementChild);
     e.currentTarget.lastElementChild.className = `${styles["edit-cont"]}`;
@@ -19,31 +52,7 @@ export default function UserAddresses() {
             + Add a new address
           </button>
         </div>
-
-        <div
-          className={styles["address-cont"]}
-          onMouseEnter={shoeEdit}
-          onMouseLeave={hideEdit}
-        >
-          <img src="./Assets/pic.jpg" className={styles["loc-icon"]} />
-
-          <div>
-            <h5>Home</h5>
-            <p className={styles["exact-address"]}>
-              <span>
-                In publishing and graphic design, Lorem ipsum is a placeholder
-                text commonly used
-              </span>{" "}
-              | <span>Karaj</span> | <span>Alborz</span>
-            </p>
-            <p className={styles["phone-number"]}>Phone Number: 123456789</p>
-          </div>
-
-          <div className={`${styles["edit-cont"]} ${styles.hidden}`}>
-            <img src="./Assets/pic.jpg" className={styles["pen-icon"]} />
-            <img src="./Assets/pic.jpg" className={styles["trash-icon"]} />
-          </div>
-        </div>
+        {arr}
       </div>
 
       <div className={`${styles.modal} ${styles.hidden}`}>

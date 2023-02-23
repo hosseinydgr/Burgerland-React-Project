@@ -1,9 +1,10 @@
 import React from "react";
-import products from "./products";
 import OrderFood from "./OrderFood";
 import styles from "./OrderFoodCategory.module.css";
+import { useSelector } from "react-redux";
 
 function OrderFoodCategory(props) {
+  const products = useSelector((state) => state.products);
   const arr = [];
   for (let i = 0; i < products.length; i++) {
     if (products[i].category === props.categoryName) {
