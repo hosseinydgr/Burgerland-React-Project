@@ -4,22 +4,48 @@ import styles from "./OrderScroll.module.css";
 export default function OrderScroll() {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
+  const firstItem = useRef(null);
+  const lastItem = useRef(null);
 
   function scrollHandler(e) {
     leftRef.current.style.left = `${e.target.scrollLeft}px`;
     rightRef.current.style.right = `-${e.target.scrollLeft}px`;
   }
 
+  function scrollToLeft() {
+    firstItem.current.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "end",
+    });
+  }
+
+  function scrollToRight() {
+    lastItem.current.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "end",
+    });
+  }
+
   return (
     <div className={styles["main-cont"]} onScroll={scrollHandler}>
-      <div className={`${styles.left} ${styles.arrow}`} ref={leftRef}>
+      <div
+        className={`${styles.left} ${styles.arrow}`}
+        ref={leftRef}
+        onClick={scrollToLeft}
+      >
         &lt;
       </div>
-      <div className={`${styles.right} ${styles.arrow}`} ref={rightRef}>
+      <div
+        className={`${styles.right} ${styles.arrow}`}
+        ref={rightRef}
+        onClick={scrollToRight}
+      >
         &gt;
       </div>
 
-      <div className={styles.item}>
+      <div className={styles.item} ref={firstItem}>
         <img src="./Assets/icons/burger-icon.png" />
         <p>Single Burger</p>
       </div>
@@ -74,7 +100,7 @@ export default function OrderScroll() {
         <p>Appetizer</p>
       </div>
 
-      <div className={styles.item}>
+      <div className={styles.item} ref={lastItem}>
         <img src="./Assets/icons/beverage-icon.png" />
         <p>Beverage</p>
       </div>
