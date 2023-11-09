@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.de4b0673.css",
+    "main.js": "/static/js/main.93bf1432.js",
+    "static/media/JostVariableFont_wght.ttf": "/static/media/JostVariableFont_wght.3410386aff8e903f953a.ttf",
+    "static/media/cover-big.jpg": "/static/media/cover-big.858a4494de0d646a01e7.jpg",
+    "index.html": "/index.html",
+    "main.de4b0673.css.map": "/static/css/main.de4b0673.css.map",
+    "main.93bf1432.js.map": "/static/js/main.93bf1432.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de4b0673.css",
+    "static/js/main.93bf1432.js"
+  ]
+}
