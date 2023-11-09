@@ -50,7 +50,7 @@
   background-color: rgb(28, 28, 28);
   color: white;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
@@ -100,7 +100,7 @@
   font-size: 18px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 

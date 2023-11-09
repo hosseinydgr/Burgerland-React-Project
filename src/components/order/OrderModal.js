@@ -25,7 +25,7 @@ function OrderModal(props) {
   }
 
   function removeBtnHandler() {
-    dispatch(modalActions.add());
+    dispatch(modalActions.remove());
   }
 
   function updateCart() {
