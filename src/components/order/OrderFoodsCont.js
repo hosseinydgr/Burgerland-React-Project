@@ -13,7 +13,10 @@ function OrderFoodsCont(props) {
 
   useEffect(function () {
     (async function () {
-      const res = await fetch("http://localhost:3000/products");
+      // const res = await fetch("http://localhost:3000/products");
+      const res = await fetch(
+        "https://654ceb3b77200d6ba859b019.mockapi.io/products"
+      );
       const data = await res.json();
       dispatch(productsActions.setup(data));
       // console.log(data);
