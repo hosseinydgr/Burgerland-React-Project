@@ -1,16 +1,19 @@
 import { useDispatch } from "react-redux";
 import { pageActions } from "../../store/page";
 import styles from "./SignUp.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function switchPage() {
     props.switchPage(true);
   }
 
   function goToOrder() {
-    dispatch(pageActions.changePage(1));
+    // dispatch(pageActions.changePage(1));
+    navigate("/order");
   }
 
   return (

@@ -4,11 +4,13 @@ import { authActions } from "../../store/auth";
 import { pageActions } from "../../store/page";
 import styles from "./Header.module.css";
 import UserControls from "./UserControls";
+import { useNavigate } from "react-router-dom";
 
 function OrderHeader() {
   const isIn = useSelector((state) => state.auth.isIn);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isControlsOpen, setIsControlsOpen] = useState(false);
 
   let content;
@@ -38,11 +40,13 @@ function OrderHeader() {
   }
 
   function logoClickHandler() {
-    dispatch(pageActions.changePage(1));
+    // dispatch(pageActions.changePage(1));
+    navigate("/order");
   }
 
   async function authPageOpener() {
-    dispatch(pageActions.changePage(3));
+    // dispatch(pageActions.changePage(3));
+    navigate("/auth");
   }
 
   return (

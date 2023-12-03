@@ -3,9 +3,11 @@ import styles from "./SignIn.module.css";
 import { pageActions } from "../../store/page";
 import { authActions } from "../../store/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,7 +24,8 @@ export default function SignIn(props) {
   }
 
   function goToOrder() {
-    dispatch(pageActions.changePage(1));
+    // dispatch(pageActions.changePage(1));
+    navigate("/order");
   }
 
   async function signInHandler(e) {
@@ -37,7 +40,8 @@ export default function SignIn(props) {
       if (data[i].phone === phone && data[i].password === password) {
         localStorage.setItem("user", JSON.stringify(data[i]));
         dispatch(authActions.login(data[i]));
-        dispatch(pageActions.changePage(1));
+        // dispatch(pageActions.changePage(1));
+        navigate("/order");
         flag = true;
       }
     }

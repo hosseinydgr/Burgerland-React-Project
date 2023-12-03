@@ -3,39 +3,47 @@ import styles from "./UserControls.module.css";
 import { authActions } from "../../store/auth";
 import { pageActions } from "../../store/page";
 import { userPageTabActions } from "../../store/userPageTab";
+import { useNavigate } from "react-router-dom";
 
 export default function UserControls({ closeWindow }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function signOutHandler() {
     localStorage.clear();
     dispatch(authActions.signOut());
-    dispatch(pageActions.changePage(1));
+    // dispatch(pageActions.changePage(1));
+    navigate("/order");
   }
 
   function goTab1() {
     dispatch(userPageTabActions.changeTab(1));
-    dispatch(pageActions.changePage(2));
+    // dispatch(pageActions.changePage(2));
+    navigate("/user");
     closeWindow();
   }
   function goTab2() {
     dispatch(userPageTabActions.changeTab(2));
-    dispatch(pageActions.changePage(2));
+    // dispatch(pageActions.changePage(2));
+    navigate("/user");
     closeWindow();
   }
   function goTab3() {
     dispatch(userPageTabActions.changeTab(3));
-    dispatch(pageActions.changePage(2));
+    // dispatch(pageActions.changePage(2));
+    navigate("/user");
     closeWindow();
   }
   function goTab4() {
     dispatch(userPageTabActions.changeTab(4));
-    dispatch(pageActions.changePage(2));
+    // dispatch(pageActions.changePage(2));
+    navigate("/user");
     closeWindow();
   }
   function goTab5() {
     dispatch(userPageTabActions.changeTab(5));
-    dispatch(pageActions.changePage(2));
+    // dispatch(pageActions.changePage(2));
+    navigate("/user");
     closeWindow();
   }
 
