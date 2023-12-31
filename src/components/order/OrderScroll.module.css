@@ -1,8 +1,13 @@
+.bigger-cont {
+  display: flex;
+  align-items: stretch;
+}
+
 .main-cont {
   display: flex;
   /* align-items: center; */
   gap: 10px;
-  overflow: scroll;
+  overflow-x: auto;
   margin-bottom: 20px;
   border-bottom: 1px dashed #ccc;
   padding-bottom: 20px;
@@ -11,7 +16,13 @@
 }
 
 .main-cont::-webkit-scrollbar {
-  display: none;
+  height: 5px;
+}
+
+.main-cont::-webkit-scrollbar-thumb {
+  /* background-color: rgb(197, 197, 197); */
+  background-color: orangered;
+  border-radius: 5px;
 }
 
 .item {
@@ -29,10 +40,17 @@
 }
 
 .arrow {
-  position: absolute;
+  background: linear-gradient(
+    to top,
+    white,
+    white,
+    rgb(237, 237, 237),
+    white,
+    white
+  );
   background-color: white;
-  height: 100%;
-  width: 20px;
+  max-height: 100%;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,10 +58,10 @@
   cursor: pointer;
 }
 
-.left {
+/* .left {
   left: 0;
 }
 
 .right {
   right: 0;
-}
+} */

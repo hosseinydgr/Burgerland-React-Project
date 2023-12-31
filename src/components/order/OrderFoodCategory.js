@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import OrderFood from "./OrderFood";
 import styles from "./OrderFoodCategory.module.css";
 import { useSelector } from "react-redux";
 
 function OrderFoodCategory(props) {
+  const thisFoodCategoryRef = useRef();
   const products = useSelector((state) => state.products);
   const arr = [];
   for (let i = 0; i < products.length; i++) {
@@ -20,8 +21,12 @@ function OrderFoodCategory(props) {
     }
   }
 
+  useEffect(() => {
+    props.foodCategoryRef.current.push(thisFoodCategoryRef.current);
+  }, []);
+
   return (
-    <div className={styles["main-cont"]}>
+    <div className={styles["main-cont"]} ref={thisFoodCategoryRef}>
       <h2 className={styles["category-title"]}>{props.categoryName}</h2>
       <div className={styles["foods-cont"]}>{arr}</div>
     </div>

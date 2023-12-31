@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import products from "./products";
 import OrderFoodCategory from "./OrderFoodCategory";
 import OrderSearch from "./OrderSearch";
@@ -10,6 +10,7 @@ import { productsActions } from "../../store/products";
 function OrderFoodsCont(props) {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  const foodCategoryRef = useRef([]);
 
   useEffect(function () {
     (async function () {
@@ -33,13 +34,19 @@ function OrderFoodsCont(props) {
     }
     const arr3 = [...new Set(arr)];
     for (let i = 0; i < arr3.length; i++) {
-      arr2.push(<OrderFoodCategory categoryName={arr3[i]} key={i} />);
+      arr2.push(
+        <OrderFoodCategory
+          categoryName={arr3[i]}
+          key={i}
+          foodCategoryRef={foodCategoryRef}
+        />
+      );
     }
   }
 
   return (
     <div className={styles["main-cont"]}>
-      <OrderScroll />
+      <OrderScroll foodCategoryRef={foodCategoryRef} />
       <OrderSearch />
       <div>
         {products
