@@ -55,3 +55,10 @@
   background-color: white;
   color: black;
 }
+
+@media (width < 500px) {
+  .main-cont {
+    width: 100vw;
+    border-radius: 0;
+  }
+}

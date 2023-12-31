@@ -75,22 +75,22 @@ import { precacheAndRoute } from "workbox-precaching";
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-// const broadcast = new BroadcastChannel('channel-1');
+const broadcast = new BroadcastChannel("channel-1");
 
-// broadcast.onmessage = (event) => {
-//     if (event.data && event.data.type === 'reload') {
-//         //process message...
-//         self.clients
-//             .matchAll({
-//                 type: 'window',
-//             })
-//             .then((windowClients) => {
-//                 windowClients.forEach((windowClient) => {
-//                     windowClient.navigate(windowClient.url);
-//                 });
-//             });
-//     }
-// };
+broadcast.onmessage = (event) => {
+  if (event.data && event.data.type === "reload") {
+    //process message...
+    self.clients
+      .matchAll({
+        type: "window",
+      })
+      .then((windowClients) => {
+        windowClients.forEach((windowClient) => {
+          windowClient.navigate(windowClient.url);
+        });
+      });
+  }
+};
 
 self.addEventListener("install", () => {
   // Skip over the "waiting" lifecycle state, to ensure that our
@@ -105,14 +105,14 @@ self.addEventListener("activate", async (event) => {
   // This can "unbreak" any open windows/tabs as soon as the new
   // service worker activates, rather than users having to manually reload.
   console.log("service worker activated.");
-  // broadcast.postMessage({ type: 'update' });
-  self.clients
-    .matchAll({
-      type: "window",
-    })
-    .then((windowClients) => {
-      windowClients.forEach((windowClient) => {
-        windowClient.navigate(windowClient.url);
-      });
-    });
+  broadcast.postMessage({ type: "update" });
+  // self.clients
+  //   .matchAll({
+  //     type: "window",
+  //   })
+  //   .then((windowClients) => {
+  //     windowClients.forEach((windowClient) => {
+  //       windowClient.navigate(windowClient.url);
+  //     });
+  //   });
 });

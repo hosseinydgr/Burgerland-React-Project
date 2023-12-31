@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./OrderCart.module.css";
 import products from "./products";
 import { useSelector, useDispatch } from "react-redux";
 import { countsActions } from "../../store/counts.js";
+import useInnerWidth from "../../hooks/use-inner-width.js";
 
 function OrderCart(props) {
   const counts = useSelector((state) => state.counts);
   const dispatch = useDispatch();
+  const [isMobileCartOpen, setIsMobileCartOpen] = useState(false);
+  const innerWidth = useInnerWidth();
 
   function addBtnHandler(e) {
     dispatch(countsActions.add(e.target.id));
@@ -18,6 +21,16 @@ function OrderCart(props) {
 
   function clearBtnHandler() {
     dispatch(countsActions.clear());
+  }
+
+  function handleOpenMobileCart() {
+    setIsMobileCartOpen(true);
+    document.body.style.overflow = "hidden";
+  }
+
+  function handleCloseMobileCart() {
+    setIsMobileCartOpen(false);
+    document.body.style.overflow = "unset";
   }
 
   const arr = [];
@@ -56,12 +69,29 @@ function OrderCart(props) {
       );
     }
   }
+
   return (
     <>
       <div
-        className={`${styles["main-cont"]} ${!arr.length ? "" : styles.hidden}`}
+        className={`${styles["main-cont"]} ${
+          (innerWidth < 977 && !arr.length && isMobileCartOpen) ||
+          (innerWidth >= 977 && !arr.length)
+            ? ""
+            : styles.hidden
+        }`}
       >
-        <h3 className={styles["empty-cart-title"]}>Cart</h3>
+        {innerWidth < 977 ? (
+          <div className={styles["empty-cart-header"]}>
+            <img
+              src="/Assets/icons/close-icon.png"
+              className={styles["close-icon"]}
+              onClick={handleCloseMobileCart}
+            />{" "}
+            <h3>Cart</h3>
+          </div>
+        ) : (
+          <h3 className={styles["empty-cart-title"]}>Cart</h3>
+        )}
         <div className={styles["empty-cart-content"]}>
           <img
             src={"./Assets/empty-box-100-gray.png"}
@@ -72,10 +102,27 @@ function OrderCart(props) {
       </div>
 
       <div
-        className={`${styles["main-cont"]} ${arr.length ? "" : styles.hidden}`}
+        className={`${styles["main-cont"]} ${
+          (innerWidth < 977 && arr.length && isMobileCartOpen) ||
+          (innerWidth >= 977 && arr.length)
+            ? ""
+            : styles.hidden
+        }`}
       >
         <div className={`${styles["flex-cont"]} ${styles.border}`}>
-          <h3>{`Cart(${c})`}</h3>
+          {innerWidth < 977 ? (
+            <div className={styles["flex-cont-no-padding"]}>
+              <img
+                src="/Assets/icons/close-icon.png"
+                className={styles["close-icon"]}
+                onClick={handleCloseMobileCart}
+              />
+              <h3>{`Cart(${c})`}</h3>
+            </div>
+          ) : (
+            <h3>{`Cart(${c})`}</h3>
+          )}
+
           <img
             src={"./Assets/icons/trash-icon.png"}
             className={styles["trash-icon"]}
@@ -98,6 +145,19 @@ function OrderCart(props) {
         <h4 className={styles["discount-btn"]}>Have a Discount Code?</h4>
 
         <button className={styles["checkout-btn"]}>Checkout</button>
+      </div>
+
+      <div
+        className={`${styles["mobile-cart-opener"]} ${
+          arr.length ? "" : styles.hidden
+        }`}
+        onClick={handleOpenMobileCart}
+      >
+        <p>{`$${(sum * 1.09).toFixed(2)}`}</p>
+        <div className={styles["flex-cont"]}>
+          <p>{`Cart(${c})`}</p>
+          <img src="./Assets/pic.jpg" />
+        </div>
       </div>
     </>
   );

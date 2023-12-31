@@ -136,6 +136,16 @@
 //   }
 // }
 
+// const broadcast = new BroadcastChannel("channel-1");
+// broadcast.onmessage = (event) => {
+//   if (event.data && event.data.type === "update") {
+//     //process message...
+//     console.log("service worker, message received...");
+//     alert("به روزسانی موجود است.");
+//     broadcast.postMessage({ type: "reload" });
+//   }
+// };
+
 export function register() {
   // Don't register the service worker
   // until the page has fully loaded

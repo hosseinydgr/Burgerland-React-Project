@@ -37,3 +37,10 @@
 .amount {
   color: rgb(69, 69, 69);
 }
+
+@media (width < 500px) {
+  .main-cont {
+    width: 100vw;
+    border-radius: 0;
+  }
+}

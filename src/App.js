@@ -39,3 +39,14 @@ function App() {
 }
 
 export default App;
+
+const broadcast = new BroadcastChannel("channel-1");
+broadcast.onmessage = (event) => {
+  if (event.data && event.data.type === "update") {
+    //process message...
+    console.log("service worker, message received...");
+    if (window.confirm("به روزسانی موجود است."))
+      broadcast.postMessage({ type: "reload" });
+    // window.location.reload();
+  }
+};

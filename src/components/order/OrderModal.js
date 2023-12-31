@@ -48,7 +48,7 @@ function OrderModal(props) {
       <div className={`${styles.modal} ${modalState[0] ? "" : styles.hidden}`}>
         <div>
           <img
-            src="./Assets/icons/close-icon.png"
+            src="/Assets/icons/close-icon.png"
             className={styles["close-icon"]}
             onClick={modalCloser}
           />

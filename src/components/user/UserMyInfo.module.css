@@ -44,3 +44,17 @@
   background-color: white;
   color: black;
 }
+
+@media (width < 500px) {
+  .main-cont {
+    width: 100vw;
+    border-radius: 0;
+  }
+}
+
+@media (width < 440px) {
+  .grid-cont {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 0;
+  }
+}

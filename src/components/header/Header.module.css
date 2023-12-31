@@ -4,8 +4,8 @@
   justify-content: space-between;
   padding: 10px 5%;
   width: 100vw;
-  /* background-color: white; */
   background-color: white;
+  /* background-color: blueviolet; */
 }
 
 .logo {
@@ -15,16 +15,19 @@
 }
 
 .action-btn {
-  background-color: white;
+  background-color: black;
   padding: 8px 15px;
   border-radius: 7px;
   cursor: pointer;
   transition-duration: 400ms;
+  border: none;
+  color: white;
 }
 
 .action-btn:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
 }
 
 @media (width <=450px) {

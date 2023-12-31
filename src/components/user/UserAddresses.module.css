@@ -150,3 +150,10 @@
 .hidden {
   display: none;
 }
+
+@media (width < 500px) {
+  .main-cont {
+    width: 100vw;
+    border-radius: 0;
+  }
+}
